@@ -15,6 +15,7 @@
     --muted: #8a6a50;
     --border: #e8d8c4;
     --green: #3a7d44;
+    --red: #d32f2f;
     --shadow: 0 4px 24px rgba(80,40,10,0.10);
   }
 
@@ -27,6 +28,221 @@
     min-height: 100vh;
   }
 
+  /* LOGIN PAGE */
+  .login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .login-page.hidden {
+    display: none;
+  }
+
+  .login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .login-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .login-box p {
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+  }
+
+  .login-box input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    transition: 0.2s;
+  }
+
+  .login-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(192,82,42,0.2);
+  }
+
+  .login-box button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .login-box button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  .error-msg {
+    color: var(--red);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    display: none;
+  }
+
+  .error-msg.show {
+    display: block;
+  }
+
+  /* ADMIN PANEL */
+  .admin-panel {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 14px;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(192,82,42,0.35);
+  }
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .admin-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .logout-btn {
+    padding: 8px 16px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+
+  .logout-btn:hover {
+    background: #b71c1c;
+  }
+
+  .search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .search-box input {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+
+  .search-box button {
+    padding: 10px 16px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+
+  .search-box button:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+  }
+
+  .search-results {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+  .search-result-item:last-child {
+    border-bottom: none;
+  }
+
+  .search-result-item .name {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .search-result-item button {
+    padding: 6px 12px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+
+  .search-result-item button:hover {
+    background: #b71c1c;
+  }
+
+  .search-result-item.unavailable .name {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+
+  .success-msg {
+    background: var(--green);
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    font-weight: 600;
+    display: none;
+  }
+
+  .success-msg.show {
+    display: block;
+  }
+
   /* HEADER */
   .header {
     background: linear-gradient(135deg, #2a1a0e 60%, #5a2d0c 100%);
@@ -35,12 +251,7 @@
     position: relative;
     overflow: hidden;
   }
-  .header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
+
   .logo-circle {
     width: 80px; height: 80px;
     background: linear-gradient(135deg, var(--accent2), var(--accent));
@@ -52,6 +263,7 @@
     position: relative;
     z-index: 1;
   }
+
   .logo-title {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
@@ -61,6 +273,7 @@
     position: relative; z-index: 1;
     text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
+
   .logo-sub {
     color: var(--accent2);
     font-size: 0.85rem;
@@ -79,7 +292,7 @@
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .tabs::-webkit-scrollbar { display: none; }
+
   .tab {
     flex-shrink: 0;
     padding: 8px 18px;
@@ -92,13 +305,14 @@
     cursor: pointer;
     transition: all 0.2s;
   }
+
   .tab.active, .tab:hover {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
   }
 
-  /* MENU LIST */
+  /* MENU */
   .menu {
     padding: 14px 16px 120px;
     display: flex;
@@ -114,12 +328,10 @@
     color: var(--accent);
     font-weight: 700;
     margin-top: 6px;
-    padding-left: 4px;
-    border-left: 3px solid var(--accent2);
     padding-left: 10px;
+    border-left: 3px solid var(--accent2);
   }
 
-  /* CARD */
   .item-card {
     background: var(--card);
     border-radius: 18px;
@@ -128,18 +340,25 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 14px 14px 14px 16px;
+    padding: 14px;
     position: relative;
     transition: transform 0.15s, box-shadow 0.15s;
     animation: fadeUp 0.4s both;
   }
+
   .item-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 32px rgba(80,40,10,0.13);
   }
+
+  .item-card.unavailable {
+    opacity: 0.6;
+    background: #f5f5f5;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .item-emoji {
@@ -156,6 +375,7 @@
     flex: 1;
     min-width: 0;
   }
+
   .item-name {
     font-weight: 700;
     font-size: 0.97rem;
@@ -164,11 +384,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .item-desc {
     font-size: 0.75rem;
     color: var(--muted);
     margin-top: 2px;
   }
+
   .item-price {
     font-weight: 800;
     font-size: 0.95rem;
@@ -176,13 +398,13 @@
     margin-top: 5px;
   }
 
-  /* COUNTER / ADD BUTTON */
   .item-control {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
   }
+
   .btn-add {
     width: 36px; height: 36px;
     border-radius: 50%;
@@ -197,7 +419,20 @@
     transition: background 0.15s, transform 0.1s;
     line-height: 1;
   }
+
   .btn-add:hover { background: #a0411e; transform: scale(1.08); }
+
+  .btn-unavailable {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #d0d0d0;
+    color: #999;
+    border: none;
+    font-size: 1rem;
+    cursor: not-allowed;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
 
   .counter-wrap {
     display: flex;
@@ -208,6 +443,7 @@
     padding: 4px 8px;
     border: 1.5px solid var(--accent2);
   }
+
   .btn-counter {
     width: 28px; height: 28px;
     border-radius: 50%;
@@ -218,16 +454,12 @@
     display: flex; align-items: center; justify-content: center;
     transition: 0.15s;
   }
-  .btn-minus {
-    background: #e0e0e0;
-    color: #555;
-  }
+
+  .btn-minus { background: #e0e0e0; color: #555; }
   .btn-minus:hover { background: #c0c0c0; }
-  .btn-plus2 {
-    background: var(--accent);
-    color: #fff;
-  }
+  .btn-plus2 { background: var(--accent); color: #fff; }
   .btn-plus2:hover { background: #a0411e; }
+
   .count-num {
     font-weight: 800;
     font-size: 1rem;
@@ -236,7 +468,7 @@
     color: var(--text);
   }
 
-  /* CART FOOTER */
+  /* CART BAR */
   .cart-bar {
     position: fixed;
     bottom: 0; left: 0; right: 0;
@@ -247,6 +479,7 @@
     z-index: 100;
     transition: transform 0.3s;
   }
+
   .cart-bar.hidden { transform: translateY(110%); }
 
   .cart-header {
@@ -255,12 +488,14 @@
     align-items: center;
     margin-bottom: 10px;
   }
+
   .cart-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--text);
   }
+
   .cart-badge {
     background: var(--accent);
     color: #fff;
@@ -269,12 +504,13 @@
     font-size: 0.8rem;
     font-weight: 700;
   }
+
   .cart-items-list {
     max-height: 130px;
     overflow-y: auto;
     margin-bottom: 10px;
-    scrollbar-width: thin;
   }
+
   .cart-row {
     display: flex;
     justify-content: space-between;
@@ -283,9 +519,10 @@
     border-bottom: 1px solid var(--border);
     font-size: 0.85rem;
   }
+
   .cart-row-name { color: var(--text); font-weight: 600; }
-  .cart-row-right { display: flex; align-items: center; gap: 8px; }
   .cart-row-price { color: var(--accent); font-weight: 700; }
+
   .cart-total-row {
     display: flex;
     justify-content: space-between;
@@ -293,6 +530,7 @@
     padding-top: 8px;
     border-top: 2px solid var(--border);
   }
+
   .cart-total-label { font-weight: 700; font-size: 0.95rem; }
   .cart-total-sum {
     font-family: 'Playfair Display', serif;
@@ -300,6 +538,7 @@
     font-weight: 900;
     color: var(--accent);
   }
+
   .btn-order {
     width: 100%;
     margin-top: 10px;
@@ -312,18 +551,10 @@
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(192,82,42,0.35);
-    letter-spacing: 0.5px;
     transition: 0.2s;
   }
-  .btn-order:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-  /* EMPTY CART HINT */
-  .cart-empty {
-    text-align: center;
-    padding: 12px 0 4px;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
+  .btn-order:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
   /* TOAST */
   .toast {
@@ -340,9 +571,10 @@
     transition: transform 0.35s cubic-bezier(.23,1.5,.5,1);
     white-space: nowrap;
   }
+
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* ORDER MODAL */
+  /* MODAL */
   .modal-overlay {
     display: none;
     position: fixed; inset: 0;
@@ -351,7 +583,9 @@
     align-items: flex-end;
     justify-content: center;
   }
+
   .modal-overlay.open { display: flex; }
+
   .modal-box {
     background: #fff;
     border-radius: 28px 28px 0 0;
@@ -361,10 +595,12 @@
     text-align: center;
     animation: slideUp 0.3s;
   }
+
   @keyframes slideUp {
     from { transform: translateY(100%); }
     to { transform: translateY(0); }
   }
+
   .modal-icon { font-size: 3rem; margin-bottom: 12px; }
   .modal-title {
     font-family: 'Playfair Display', serif;
@@ -383,131 +619,40 @@
     font-weight: 700;
     cursor: pointer;
   }
-
-  /* ADMIN BUTTON */
-  .btn-admin {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 150;
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.2);
-    background: rgba(42,26,14,0.7);
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(6px);
-    transition: 0.2s;
-  }
-  .btn-admin:hover { background: rgba(42,26,14,0.9); }
-  .btn-admin.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 2px 12px rgba(192,82,42,0.4);
-  }
-
-  /* ADMIN PANEL */
-  .admin-panel {
-    display: none;
-    background: linear-gradient(135deg, #2a1a0e, #3a2010);
-    padding: 14px 16px;
-    max-width: 560px;
-    margin: 0 auto;
-    border-radius: 0 0 18px 18px;
-  }
-  .admin-panel.open { display: block; }
-  .admin-panel-title {
-    color: var(--accent2);
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-    text-align: center;
-  }
-  .admin-panel-hint {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.75rem;
-    text-align: center;
-  }
-
-  /* TOGGLE SWITCH */
-  .item-toggle {
-    display: none;
-    flex-shrink: 0;
-    margin-right: 4px;
-  }
-  .admin-mode .item-toggle { display: block; }
-
-  .toggle-switch {
-    position: relative;
-    width: 44px; height: 24px;
-    cursor: pointer;
-  }
-  .toggle-switch input { display: none; }
-  .toggle-slider {
-    position: absolute; inset: 0;
-    background: #ccc;
-    border-radius: 24px;
-    transition: 0.3s;
-  }
-  .toggle-slider::before {
-    content: '';
-    position: absolute;
-    width: 18px; height: 18px;
-    left: 3px; bottom: 3px;
-    background: #fff;
-    border-radius: 50%;
-    transition: 0.3s;
-  }
-  .toggle-switch input:checked + .toggle-slider {
-    background: var(--green);
-  }
-  .toggle-switch input:checked + .toggle-slider::before {
-    transform: translateX(20px);
-  }
-
-  /* DISABLED ITEM */
-  .item-card.disabled {
-    opacity: 0.5;
-    filter: grayscale(0.4);
-    position: relative;
-  }
-  .item-card.disabled .item-control { pointer-events: none; }
-  .item-card.disabled .btn-add { background: #bbb; box-shadow: none; }
-
-  .badge-soldout {
-    display: none;
-    background: #d32f2f;
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .item-card.disabled .badge-soldout { display: inline-block; }
 </style>
 </head>
 <body>
+
+<!-- LOGIN PAGE -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h2>🔐 Admin Panel</h2>
+    <p>Taomlarni boshqarish uchun parol kiriting</p>
+    <input type="password" id="passwordInput" placeholder="Parolni yozing..." />
+    <button onclick="checkPassword()">Kirish</button>
+    <div class="error-msg" id="errorMsg">❌ Parol notog'ri!</div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel hidden" id="adminPanel">
+  <div class="admin-header">
+    <h3>🔧 Taomni Boshqarish</h3>
+    <button class="logout-btn" onclick="logout()">Chiqish</button>
+  </div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Taom nomini yozing..." />
+    <button onclick="searchAndToggle()">Qidirish</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="success-msg" id="successMsg"></div>
+</div>
 
 <!-- HEADER -->
 <div class="header">
   <div class="logo-circle">🌿</div>
   <div class="logo-title">Mingchinor Kafe</div>
   <div class="logo-sub">Elektron Menyu</div>
-</div>
-
-<!-- ADMIN BUTTON -->
-<button class="btn-admin" id="adminBtn" onclick="toggleAdmin()" title="Boshqaruv rejimi">⚙️</button>
-
-<!-- ADMIN PANEL -->
-<div class="admin-panel" id="adminPanel">
-  <div class="admin-panel-title">Boshqaruv rejimi</div>
-  <div class="admin-panel-hint">Tugab qolgan taomlarni o'chirish uchun kalitni bosing</div>
 </div>
 
 <!-- CATEGORY TABS -->
@@ -533,7 +678,7 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ORDER MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
     <div class="modal-icon">🎉</div>
@@ -544,86 +689,179 @@
 </div>
 
 <script>
+// PAROL (O'zgarting!)
+const ADMIN_PASSWORD = "mingchinor123";
+
+let isAuthenticated = false;
+
+// URL-ni tekshir
+function checkURL() {
+  const path = window.location.pathname;
+  if (path.includes('/edit')) {
+    document.getElementById('loginPage').classList.remove('hidden');
+    isAuthenticated = false;
+  } else {
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('adminPanel').classList.add('hidden');
+    isAuthenticated = false;
+  }
+}
+
+// PAROL TEKSHIR
+function checkPassword() {
+  const password = document.getElementById('passwordInput').value;
+  const errorMsg = document.getElementById('errorMsg');
+
+  if (password === ADMIN_PASSWORD) {
+    isAuthenticated = true;
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('adminPanel').classList.remove('hidden');
+    errorMsg.classList.remove('show');
+  } else {
+    errorMsg.classList.add('show');
+    document.getElementById('passwordInput').value = '';
+  }
+}
+
+// CHIQISH
+function logout() {
+  isAuthenticated = false;
+  window.location.href = window.location.origin + window.location.pathname.replace('/edit', '');
+}
+
+// ENTER TUGMASI BILAN LOGIN
+document.addEventListener('DOMContentLoaded', () => {
+  checkURL();
+  renderMenu(null);
+  
+  const passwordInput = document.getElementById('passwordInput');
+  if (passwordInput) {
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') checkPassword();
+    });
+  }
+
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') searchAndToggle();
+    });
+  }
+});
+
 const menuData = [
   {
     category: "🍜 Birinchi taomlar",
     items: [
-      { id: 1, emoji: "🥣", name: "Mastava", desc: "Qo'zichoq go'shti, sabzavotlar", price: 28000 },
-      { id: 2, emoji: "🍲", name: "Shurva", desc: "Qo'y go'shti, karam, sabzi", price: 25000 },
-      { id: 3, emoji: "🥘", name: "Lagman", desc: "El noodles, go'sht, sabzavot", price: 32000 },
-      { id: 4, emoji: "🫕", name: "Moshxo'rda", desc: "Mosh, guruch, yog'", price: 22000 },
+      { id: 1, emoji: "🥣", name: "Mastava", desc: "Qo'zichoq go'shti, sabzavotlar", price: 28000, available: true },
+      { id: 2, emoji: "🍲", name: "Shurva", desc: "Qo'y go'shti, karam, sabzi", price: 25000, available: true },
+      { id: 3, emoji: "🥘", name: "Lagman", desc: "El noodles, go'sht, sabzavot", price: 32000, available: true },
+      { id: 4, emoji: "🫕", name: "Moshxo'rda", desc: "Mosh, guruch, yog'", price: 22000, available: true },
     ]
   },
   {
     category: "🍽️ Ikkinchi taomlar",
     items: [
-      { id: 5, emoji: "🍚", name: "Osh (Palov)", desc: "Qo'zichoq go'shti, sabzi, guruch", price: 38000 },
-      { id: 6, emoji: "🥩", name: "Kabob", desc: "Qo'y go'shti, zira, piyoz", price: 45000 },
-      { id: 7, emoji: "🫔", name: "Dimlama", desc: "Go'sht, kartoshka, sabzavotlar", price: 35000 },
-      { id: 8, emoji: "🍗", name: "Tovuq qovurma", desc: "Basmati guruch bilan", price: 40000 },
-      { id: 9, emoji: "🥗", name: "Achichuk salat", desc: "Pomidor, bodring, piyoz, ko'k", price: 15000 },
+      { id: 5, emoji: "🍚", name: "Osh (Palov)", desc: "Qo'zichoq go'shti, sabzi, guruch", price: 38000, available: true },
+      { id: 6, emoji: "🥩", name: "Kabob", desc: "Qo'y go'shti, zira, piyoz", price: 45000, available: true },
+      { id: 7, emoji: "🫔", name: "Dimlama", desc: "Go'sht, kartoshka, sabzavotlar", price: 35000, available: true },
+      { id: 8, emoji: "🍗", name: "Tovuq qovurma", desc: "Basmati guruch bilan", price: 40000, available: true },
+      { id: 9, emoji: "🥗", name: "Achichuk salat", desc: "Pomidor, bodring, piyoz, ko'k", price: 15000, available: true },
     ]
   },
   {
     category: "🫓 Non va sneklar",
     items: [
-      { id: 10, emoji: "🫓", name: "Patir non", desc: "Tandirda pishirilgan", price: 8000 },
-      { id: 11, emoji: "🥙", name: "Somsa", desc: "Go'shtli, yangi pishirilgan", price: 12000 },
-      { id: 12, emoji: "🥟", name: "Manti", desc: "Qo'y go'shti bilan (6 dona)", price: 30000 },
+      { id: 10, emoji: "🫓", name: "Patir non", desc: "Tandirda pishirilgan", price: 8000, available: true },
+      { id: 11, emoji: "🥙", name: "Somsa", desc: "Go'shtli, yangi pishirilgan", price: 12000, available: true },
+      { id: 12, emoji: "🥟", name: "Manti", desc: "Qo'y go'shti bilan (6 dona)", price: 30000, available: true },
     ]
   },
   {
     category: "🧃 Ichimliklar",
     items: [
-      { id: 13, emoji: "🍵", name: "Ko'k choy", desc: "Chinni piyolada", price: 8000 },
-      { id: 14, emoji: "☕", name: "Qora choy", desc: "Limon bilan", price: 8000 },
-      { id: 15, emoji: "🧃", name: "Sharbat", desc: "Mavsumiy mevalar", price: 18000 },
-      { id: 16, emoji: "🥛", name: "Ayron", desc: "Yangi, sovuq", price: 12000 },
-      { id: 17, emoji: "💧", name: "Mineral suv", desc: "Gaz'li / gaz'siz (0.5L)", price: 7000 },
+      { id: 13, emoji: "🍵", name: "Ko'k choy", desc: "Chinni piyolada", price: 8000, available: true },
+      { id: 14, emoji: "☕", name: "Qora choy", desc: "Limon bilan", price: 8000, available: true },
+      { id: 15, emoji: "🧃", name: "Sharbat", desc: "Mavsumiy mevalar", price: 18000, available: true },
+      { id: 16, emoji: "🥛", name: "Ayron", desc: "Yangi, sovuq", price: 12000, available: true },
+      { id: 17, emoji: "💧", name: "Mineral suv", desc: "Gaz'li / gaz'siz (0.5L)", price: 7000, available: true },
     ]
   },
   {
     category: "🍰 Shirinliklar",
     items: [
-      { id: 18, emoji: "🍯", name: "Halva", desc: "An'anaviy, yong'oq bilan", price: 20000 },
-      { id: 19, emoji: "🍮", name: "Murabbo", desc: "O'rik murabbo, qaymoq", price: 15000 },
-      { id: 20, emoji: "🍩", name: "Pishiriqlar", desc: "Kunlik assortment", price: 14000 },
+      { id: 18, emoji: "🍯", name: "Halva", desc: "An'anaviy, yong'oq bilan", price: 20000, available: true },
+      { id: 19, emoji: "🍮", name: "Murabbo", desc: "O'rik murabbo, qaymoq", price: 15000, available: true },
+      { id: 20, emoji: "🍩", name: "Pishiriqlar", desc: "Kunlik assortment", price: 14000, available: true },
     ]
   }
 ];
 
 let cart = {};
-let disabledItems = new Set();
-let adminMode = false;
-
-// Load disabled items from localStorage
-try {
-  const saved = localStorage.getItem('disabledItems');
-  if (saved) disabledItems = new Set(JSON.parse(saved));
-} catch(e) {}
-
-function saveDisabled() {
-  localStorage.setItem('disabledItems', JSON.stringify([...disabledItems]));
-}
-
-function toggleAdmin() {
-  adminMode = !adminMode;
-  const btn = document.getElementById('adminBtn');
-  const panel = document.getElementById('adminPanel');
-  const menuEl = document.getElementById('menuEl');
-  btn.classList.toggle('active', adminMode);
-  panel.classList.toggle('open', adminMode);
-  menuEl.classList.toggle('admin-mode', adminMode);
-  renderMenu(currentFilter);
-}
-
-let currentFilter = null;
 
 function fmt(n) {
   return n.toLocaleString('uz-UZ') + " so'm";
 }
 
-// Render tabs
+// SEARCH & TOGGLE
+function searchAndToggle() {
+  if (!isAuthenticated) return;
+
+  const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  const searchResults = document.getElementById('searchResults');
+  const successMsg = document.getElementById('successMsg');
+
+  if (!searchInput.trim()) {
+    searchResults.innerHTML = '<p style="color: var(--muted); text-align: center;">Taom nomini yozing</p>';
+    return;
+  }
+
+  let found = [];
+  for (const category of menuData) {
+    for (const item of category.items) {
+      if (item.name.toLowerCase().includes(searchInput)) {
+        found.push(item);
+      }
+    }
+  }
+
+  if (found.length === 0) {
+    searchResults.innerHTML = '<p style="color: var(--red); text-align: center;">Taom topilmadi ❌</p>';
+    return;
+  }
+
+  searchResults.innerHTML = '';
+  found.forEach(item => {
+    const div = document.createElement('div');
+    div.className = `search-result-item ${!item.available ? 'unavailable' : ''}`;
+    div.innerHTML = `
+      <span class="name">${item.emoji} ${item.name}</span>
+      <button onclick="toggleAvailability(${item.id})">${item.available ? 'O\'chir' : 'Yoq'}</button>
+    `;
+    searchResults.appendChild(div);
+  });
+}
+
+// TOGGLE AVAILABILITY
+function toggleAvailability(itemId) {
+  for (const category of menuData) {
+    const item = category.items.find(i => i.id === itemId);
+    if (item) {
+      item.available = !item.available;
+      renderMenu(null);
+      searchAndToggle();
+
+      const successMsg = document.getElementById('successMsg');
+      successMsg.textContent = `✅ ${item.name} ${item.available ? 'yoqildi ✓' : 'o\'chirildi ⏸️'}`;
+      successMsg.classList.add('show');
+      setTimeout(() => successMsg.classList.remove('show'), 3000);
+
+      return;
+    }
+  }
+}
+
+// RENDER TABS
 const tabsEl = document.getElementById('tabsEl');
 const allTab = document.createElement('div');
 allTab.className = 'tab active';
@@ -644,36 +882,31 @@ function setActiveTab(el) {
   el.classList.add('active');
 }
 
-// Render menu
+// RENDER MENU
 function renderMenu(filter) {
-  currentFilter = filter;
   const menuEl = document.getElementById('menuEl');
   menuEl.innerHTML = '';
-  if (adminMode) menuEl.classList.add('admin-mode');
   let delay = 0;
+
   menuData.forEach(sec => {
     if (filter && sec.category !== filter) return;
+
     const title = document.createElement('div');
     title.className = 'section-title';
     title.textContent = sec.category;
     menuEl.appendChild(title);
 
     sec.items.forEach(item => {
-      const isDisabled = disabledItems.has(item.id);
       const card = document.createElement('div');
-      card.className = 'item-card' + (isDisabled ? ' disabled' : '');
+      card.className = 'item-card';
+      if (!item.available) card.classList.add('unavailable');
       card.style.animationDelay = delay + 'ms';
       delay += 60;
+
       card.innerHTML = `
-        <div class="item-toggle">
-          <label class="toggle-switch">
-            <input type="checkbox" ${!isDisabled ? 'checked' : ''} onchange="toggleItem(${item.id}, this.checked)">
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
         <div class="item-emoji">${item.emoji}</div>
         <div class="item-info">
-          <div class="item-name">${item.name} <span class="badge-soldout">Tugagan</span></div>
+          <div class="item-name">${item.name}${!item.available ? ' ⏸️' : ''}</div>
           <div class="item-desc">${item.desc}</div>
           <div class="item-price">${fmt(item.price)}</div>
         </div>
@@ -688,6 +921,12 @@ function renderMenu(filter) {
 function renderControl(item) {
   const ctrl = document.getElementById('ctrl-' + item.id);
   if (!ctrl) return;
+
+  if (!item.available) {
+    ctrl.innerHTML = `<button class="btn-unavailable" disabled>⏸️</button>`;
+    return;
+  }
+
   const qty = cart[item.id] ? cart[item.id].qty : 0;
   if (qty === 0) {
     ctrl.innerHTML = `<button class="btn-add" onclick="addItem(${item.id})">+</button>`;
@@ -710,28 +949,12 @@ function getItem(id) {
 }
 
 function addItem(id) {
-  if (disabledItems.has(id)) return;
   const item = getItem(id);
-  if (!item) return;
+  if (!item || !item.available) return;
   cart[id] = cart[id] ? { ...cart[id], qty: cart[id].qty + 1 } : { item, qty: 1 };
   renderControl(item);
   updateCart();
   showToast('✅ ' + item.name + ' qo\'shildi');
-}
-
-function toggleItem(id, enabled) {
-  if (enabled) {
-    disabledItems.delete(id);
-  } else {
-    disabledItems.add(id);
-    // Remove from cart if disabled
-    if (cart[id]) {
-      delete cart[id];
-      updateCart();
-    }
-  }
-  saveDisabled();
-  renderMenu(currentFilter);
 }
 
 function changeQty(id, delta) {
@@ -757,6 +980,7 @@ function updateCart() {
     bar.classList.add('hidden');
     return;
   }
+
   bar.classList.remove('hidden');
   countEl.textContent = totalQty + ' ta';
   totalEl.textContent = fmt(totalSum);
@@ -775,7 +999,6 @@ function updateCart() {
 }
 
 function filterCategory(cat) {
-  currentFilter = cat;
   renderMenu(cat);
 }
 
@@ -790,7 +1013,6 @@ function placeOrder() {
   document.getElementById('modal').classList.add('open');
   cart = {};
   updateCart();
-  // re-render controls
   renderMenu(null);
   document.getElementById('cartBar').classList.add('hidden');
 }
@@ -798,9 +1020,6 @@ function placeOrder() {
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
 }
-
-// Initial render
-renderMenu(null);
 </script>
 </body>
 </html>
